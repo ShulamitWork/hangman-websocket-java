@@ -3,20 +3,23 @@ package com.example.hangman.model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GameSession implements Serializable {
     private String wordToGuess;
     private Set<Character> guessedLetters = new HashSet<>();
     private int remainingAttempts = 6;
     private boolean isGameOver = false;
 
-    // Required no-args constructor for Jackson
+    // Required no-args constructor for JSON deserialization
     public GameSession() {}
 
     public GameSession(String wordToGuess) {
         this.wordToGuess = wordToGuess.toLowerCase();
     }
 
+    // Handle user guess
     public boolean guess(char letter) {
         if (isGameOver || guessedLetters.contains(letter)) {
             return false;
@@ -34,6 +37,7 @@ public class GameSession implements Serializable {
         return true;
     }
 
+    // Check if the full word is guessed
     public boolean isWordGuessed() {
         for (char c : wordToGuess.toCharArray()) {
             if (!guessedLetters.contains(c)) {
@@ -43,6 +47,7 @@ public class GameSession implements Serializable {
         return true;
     }
 
+    // Build a masked word string (e.g., d__a___)
     public String getMaskedWord() {
         StringBuilder sb = new StringBuilder();
         for (char c : wordToGuess.toCharArray()) {
@@ -56,7 +61,6 @@ public class GameSession implements Serializable {
     }
 
     // Getters and setters
-
     public String getWordToGuess() {
         return wordToGuess;
     }

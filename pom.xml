@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Group ID, Artifact ID, and Version -->
     <groupId>com.example</groupId>
     <artifactId>hangman-websocket-java</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -16,31 +16,40 @@
     </properties>
 
     <dependencies>
-        <!-- WebSocket API (Jakarta) -->
+        <!-- Jakarta WebSocket API -->
         <dependency>
             <groupId>jakarta.websocket</groupId>
             <artifactId>jakarta.websocket-api</artifactId>
             <version>2.1.0</version>
         </dependency>
 
-        <!-- JSON handling (Jackson) -->
+        <!-- Jackson for JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.17.0</version>
         </dependency>
 
-        <!-- Tyrus - WebSocket Server (Jakarta) -->
+        <!-- Tyrus server components -->
         <dependency>
             <groupId>org.glassfish.tyrus</groupId>
-            <artifactId>tyrus-standalone-server</artifactId>
+            <artifactId>tyrus-server</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.tyrus</groupId>
+            <artifactId>tyrus-container-grizzly-server</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.tyrus</groupId>
+            <artifactId>tyrus-container-jdk-client</artifactId>
             <version>2.1.3</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -52,5 +61,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

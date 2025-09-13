@@ -12,7 +12,8 @@ public class GamePersistence {
     private static final String FILE = "game_sessions.json";
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public static void save(Map<String, GameSession> sessions) {
+    // Save all game sessions to disk
+    public static synchronized void save(Map<String, GameSession> sessions) {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(FILE), sessions);
         } catch (Exception e) {
@@ -20,6 +21,7 @@ public class GamePersistence {
         }
     }
 
+    // Load game sessions from disk at server startup
     public static Map<String, GameSession> load() {
         try {
             File f = new File(FILE);

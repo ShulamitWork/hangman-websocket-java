@@ -14,7 +14,9 @@ hangman-websocket-java/
 │ ├─ java/com/example/hangman/
 │ │ ├─ model/GameSession.java # Game logic and state
 │ │ ├─ service/RandomWordService.java # External word API
-│ │ ├─ persistence/GamePersistence.java # Save/load game state to file
+│ │ ├─ persistence/
+│ │   ├─GamePersistence.java # Save/load game state to file
+│ │   ├─SessionManager.java
 │ │ ├─ websocket/HangmanEndpoint.java # WebSocket endpoint
 │ │ └─ server/HangmanServer.java # Starts the WebSocket server
 │ └─ resources/static/
