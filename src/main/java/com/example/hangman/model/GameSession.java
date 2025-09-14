@@ -11,6 +11,7 @@ public class GameSession implements Serializable {
     private Set<Character> guessedLetters = new HashSet<>();
     private int remainingAttempts = 6;
     private boolean isGameOver = false;
+    private boolean isWin = false; // New field
 
     // Required no-args constructor for JSON deserialization
     public GameSession() {}
@@ -26,12 +27,17 @@ public class GameSession implements Serializable {
         }
 
         guessedLetters.add(letter);
+
         if (!wordToGuess.contains(String.valueOf(letter))) {
             remainingAttempts--;
         }
 
-        if (remainingAttempts == 0 || isWordGuessed()) {
+        if (isWordGuessed()) {
             isGameOver = true;
+            isWin = true;
+        } else if (remainingAttempts == 0) {
+            isGameOver = true;
+            isWin = false;
         }
 
         return true;
@@ -58,6 +64,15 @@ public class GameSession implements Serializable {
             }
         }
         return sb.toString();
+    }
+
+    // Reset the game with a new word
+    public void reset(String newWord) {
+        this.wordToGuess = newWord.toLowerCase();
+        this.guessedLetters.clear();
+        this.remainingAttempts = 6;
+        this.isGameOver = false;
+        this.isWin = false;
     }
 
     // Getters and setters
@@ -91,5 +106,13 @@ public class GameSession implements Serializable {
 
     public void setGameOver(boolean gameOver) {
         isGameOver = gameOver;
+    }
+
+    public boolean isWin() {
+        return isWin;
+    }
+
+    public void setWin(boolean win) {
+        isWin = win;
     }
 }
