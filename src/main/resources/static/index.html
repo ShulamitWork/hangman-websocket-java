@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman Game</title>
+</head>
+<body>
+<h1>Hangman</h1>
+
+<!-- Displays the current masked word -->
+<p id="maskedWord">Loading...</p>
+
+<!-- Input for guessing a single letter -->
+<input id="letter" maxlength="1" />
+<button onclick="sendGuess()">Guess</button>
+
+<!-- Paragraph to show remaining attempts -->
+<p id="remaining"></p>
+
+<!-- Paragraph to show game status (win/loss) -->
+<p id="status"></p>
+
+<!-- Paragraph to show user feedback (e.g. input validation) -->
+<p id="userMessage" style="color: red;"></p>
+
+<!-- Restart button (initially hidden) -->
+<button id="restartBtn" onclick="restartGame()" style="display:none;">Restart Game</button>
+
+<!-- Link to the JavaScript file -->
+<script src="app.js"></script>
+</body>
+</html>
