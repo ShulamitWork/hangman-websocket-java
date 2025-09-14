@@ -33,21 +33,28 @@ hangman-websocket-java/
 │           └── app.js                      # Frontend logic
 ```
 ## How to Run
-Build the project and run the application:
+You can clone and run the project locally using the following steps:
 
 ### Requirements
-- Java 17 (Tested with **Corretto 17**)
+- Java 17 (Tested with **Amazon Corretto 17**)
 - Maven 3.x
+- Internet connection (for fetching random words)
 
-### Run the Server
+### Clone the Repository
+```bash
+git clone https://github.com/ShulamitWork/hangman-websocket-java
+cd hangman-websocket-java
+```
+### Build & Run the Server
 ```bash
 mvn clean package
 java -jar target/*.jar
 ```
-After the server starts successfully, open your browser and navigate to:
+Once the server is up and running, open your browser at:
 ```text
 http://localhost:8080/index.html
 ```
+Make sure port 8080 is available and not blocked by another service
 ### Game Rules
 
 - The game picks a random word from an external API.
